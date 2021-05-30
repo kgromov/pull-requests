@@ -1,0 +1,39 @@
+.header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20p;
+}
+
+.container {
+
+}
+
+.progressbar {
+    width: 100px;
+    margin: 10% 5%;
+    /* display: inline-block; */
+    /* position: absolute; */
+}
+
+.leader {
+    background-color: green;
+}
+
+.average {
+    background-color: yellow;
+}
+
+.outsider {
+    background-color: red;
+}
+
+p {
+    display: inline-block;
+    padding: 10px;
+}
+
+.fa-arrow-up{
+    color: red;
+}
