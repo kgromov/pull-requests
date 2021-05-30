@@ -17,15 +17,20 @@ function initData() {
         });
         const prevSummary = loadDevelopers(127); 
         const currentSummary = loadDevelopers(128);
+
+        // const devsContainer = $('.container');
+        // for(let i=0; i<currentSummary.length; i++) {            
+        //     devsContainer.append('<div id=\"' +i+ '\"></div>');
+        // }
         initDOM(prevSummary, currentSummary);
     });  
 }
 
 function loadDevelopers(sprintNumber) {
-    const developers = [];   
+    const developers = [];     
     $.getJSON( `data/pr-summary-sprint-${sprintNumber}.json`, function( data ) {
         $.each( data, function(i, dev) {  
-            developers.push(dev);                      
+            developers.push(dev);    
         });
     });
     developers.sort((a, b) => -(a.count - b.count));
@@ -36,31 +41,32 @@ function initDOM(prevSummary, currentSummary) {
 
     const devsContainer = $('.container');
 
-    let currIndex = 0;
+  
     const groups = Math.floor(currentSummary.length / 3) + (currentSummary.length % 3 === 0 ? 0 : 1);
     let groupIndex = 0;
     const minPRs = currentSummary[currentSummary.length-1].count;
-    currentSummary.forEach(currState => {
+    for (let i = 0; i < currentSummary.length; i++) {
+        let currState = currentSummary[i];
         const prevState = prevSummary.find(dev => dev.lastName === currState.lastName);
         const prevIndex = prevSummary.findIndex(dev => dev.lastName === currState.lastName);
         console.log(currState);
         const diff = prevState ? '(+' + (currState.count - prevState.count) + ')' : '';
        
-        if (currIndex > 0 && currIndex % groups === 0) {
+        if (i > 0 && i % groups === 0) {
             ++groupIndex;
         }
-        ++currIndex;
-        // let value = currState.firstName + ' ' + currState.lastName + ' = ' + currState.count;    
-        devsContainer.append('<div></div>');
-        const dev = $('.container div:nth-child(' + currIndex +')');
+         
+        devsContainer.append('<div id=\"' +i+ '\"></div>');   
+        const dev = $('.container #'+i).addClass('progressbar');  
+        console.log('currIndex = ', i, ' prevIndex = ', prevIndex, ', dev: ', dev.attr('id'));
 
-        console.log('currIndex = ', currIndex, ' prevIndex = ', prevIndex);
-        dev.addClass(getColorClass(groupIndex)); /*.css('width', Math.floor(currState.count / minPRs * 300));*/
-        dev.prepend(getIcon(prevIndex === -1 ? 0 : prevIndex - currIndex));
-        $('.container div:nth-child(' + currIndex +') i')
-            .after('<p>'+ currState.firstName + ' ' + currState.lastName 
-            +': <p>'+currState.count + '<em>' + diff + '</em></p>' +': </p>');
-    });    
+        dev.addClass(getColorClass(groupIndex)).css('width', Math.floor(currState.count / minPRs * 1.5 * 300));
+        dev.prepend(getIcon(prevIndex === -1 ? 0 : prevIndex - i));
+        dev.find('i')
+            .after('<p>'+ currState.firstName + ' ' + currState.lastName +': </p>');
+        dev.append('<p class=\"diff\">' +currState.count + '<em>' + diff + '</em></p>' );
+        dev.prepend('<span>'+ (i+1) +'</span>');
+    }   
 }  
 
 function getColorClass(groupIndex) {
