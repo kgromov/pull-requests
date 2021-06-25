@@ -15,8 +15,8 @@ function initData() {
         $.ajaxSetup({
             async: false
         });
-        const prevSummary = loadDevelopers(128); 
-        const currentSummary = loadDevelopers(129);
+        const prevSummary = loadDevelopers(129); 
+        const currentSummary = loadDevelopers(130);
 
         // const devsContainer = $('.container');
         // for(let i=0; i<currentSummary.length; i++) {            
