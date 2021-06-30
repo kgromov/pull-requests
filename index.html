@@ -10,13 +10,17 @@
 <body onload="initData();">
     <div class="container">
         <h1 class="header">Pull requests summary</h1>
-        <!-- <div class="sprint">
+        <div class="sprint">
             <label for="sprint-number">Sprint</label>
-            <select name="sprint-number" id="sprint-number">
+            <select class="sprint-number">
+                <!-- Change first to use node in order to populate options, then switch to mongoose -->
+                <option value="130">130</option>
+                <option value="129">129</option>
                 <option value="128">128</option>
                 <option value="127">127</option>
             </select>
-        </div> -->
+            <div class="summary"></div>
+        </div>
     </div>
     <script src="libs/jquery-3.6.0.js"></script>
     <script src="index.js"></script>

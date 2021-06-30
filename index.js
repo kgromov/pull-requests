@@ -15,21 +15,25 @@ function initData() {
         $.ajaxSetup({
             async: false
         });
-        const prevSummary = loadDevelopers(129); 
-        const currentSummary = loadDevelopers(130);
 
-        // const devsContainer = $('.container');
-        // for(let i=0; i<currentSummary.length; i++) {            
-        //     devsContainer.append('<div id=\"' +i+ '\"></div>');
-        // }
-        initDOM(prevSummary, currentSummary);
+        $('.sprint-number').on('change', () => {
+            const currentSprint = $('.sprint-number').val();
+            const prevSprint = currentSprint - 1; 
+            console.log('currentSprint=', currentSprint, ', prevSprint=', prevSprint);
+            $('.summary').empty();
+            initDOM(prevSprint, currentSprint);
+        });
+
+        const currentSprint = $('.sprint-number option:nth-child(1)').val();
+        const prevSprint = currentSprint - 1; 
+        initDOM(prevSprint, currentSprint);
     });  
 }
 
 function loadDevelopers(sprintNumber) {
     const developers = [];     
-    $.getJSON( `data/pr-summary-sprint-${sprintNumber}.json`, function( data ) {
-        $.each( data, function(i, dev) {  
+    $.getJSON( `data/pr-summary-sprint-${sprintNumber}.json`, function(data) {
+        $.each(data, function(i, dev) {  
             developers.push(dev);    
         });
     });
@@ -37,10 +41,11 @@ function loadDevelopers(sprintNumber) {
     return developers;
 }
 
-function initDOM(prevSummary, currentSummary) {
+function initDOM(prevSprint, currentSprint) {
+    const prevSummary = loadDevelopers(prevSprint); 
+    const currentSummary = loadDevelopers(currentSprint);
 
-    const devsContainer = $('.container');
-
+    const devsContainer = $('.summary');
   
     const groups = Math.floor(currentSummary.length / 3) + (currentSummary.length % 3 === 0 ? 0 : 1);
     let groupIndex = 0;
@@ -49,7 +54,7 @@ function initDOM(prevSummary, currentSummary) {
         let currState = currentSummary[i];
         const prevState = prevSummary.find(dev => dev.lastName === currState.lastName);
         const prevIndex = prevSummary.findIndex(dev => dev.lastName === currState.lastName);
-        console.log(currState);
+        // console.log(currState);
         const diff = prevState ? '(+' + (currState.count - prevState.count) + ')' : '';
        
         if (i > 0 && i % groups === 0) {
@@ -57,8 +62,8 @@ function initDOM(prevSummary, currentSummary) {
         }
          
         devsContainer.append('<div id=\"' +i+ '\"></div>');   
-        const dev = $('.container #'+i).addClass('progressbar');  
-        console.log('currIndex = ', i, ' prevIndex = ', prevIndex, ', dev: ', dev.attr('id'));
+        const dev = $('.summary #'+i).addClass('progressbar');  
+        // console.log('currIndex = ', i, ' prevIndex = ', prevIndex, ', dev: ', dev.attr('id'));
 
         dev.addClass(getColorClass(groupIndex)).css('width', Math.floor(currState.count / minPRs * 1.5 * 300));
         dev.prepend(getIcon(prevIndex === -1 ? 0 : prevIndex - i));
