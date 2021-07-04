@@ -1,0 +1,52 @@
+.header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20p;
+}
+
+.sprint {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    padding-bottom: 10px; 
+}
+
+.progressbar {
+    width: 300px;
+    margin: 2px 0px;
+    text-align: left;
+    padding-left: 10px;
+    /* display: inline-block; */
+    /* position: absolute; */
+}
+
+.leader {
+    background-color: green;
+}
+
+.average {
+    background-color: yellow;
+}
+
+.outsider {
+    background-color: red;
+}
+
+p {
+    display: inline-block;
+    padding: 0px 10px;
+}
+
+.diff {
+    text-align: right;
+    /* display: inline-block; */
+}
+
+.fa-arrow-up{
+    color: red;
+}
+
+span {
+    margin-right: 5px;
+}
