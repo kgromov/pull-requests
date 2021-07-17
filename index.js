@@ -11,34 +11,17 @@ class Developer {
 }
 
 function initData() {
-    $(document).ready(function(){
-        $.ajaxSetup({
-            async: false
-        });
-
-        $('.sprint-number').on('change', () => {
-            const currentSprint = $('.sprint-number').val();
-            const prevSprint = currentSprint - 1; 
-            console.log('currentSprint=', currentSprint, ', prevSprint=', prevSprint);
-            $('.summary').empty();
-            initDOM(prevSprint, currentSprint);
-        });
-
-        const currentSprint = $('.sprint-number option:nth-child(1)').val();
+    $('.sprint-number').on('change', () => {
+        const currentSprint = $('.sprint-number').val();
         const prevSprint = currentSprint - 1; 
+        console.log('currentSprint=', currentSprint, ', prevSprint=', prevSprint);
+        $('.summary').empty();
         initDOM(prevSprint, currentSprint);
-    });  
-}
-
-function loadDevelopers(sprintNumber) {
-    const developers = [];     
-    $.getJSON( `data/pr-summary-sprint-${sprintNumber}.json`, function(data) {
-        $.each(data, function(i, dev) {  
-            developers.push(dev);    
-        });
     });
-    developers.sort((a, b) => -(a.count - b.count));
-    return developers;
+
+    const currentSprint = $('.sprint-number option:nth-child(1)').val();
+    const prevSprint = currentSprint - 1; 
+    initDOM(prevSprint, currentSprint);
 }
 
 function initDOM(prevSprint, currentSprint) {
@@ -73,6 +56,16 @@ function initDOM(prevSprint, currentSprint) {
         dev.prepend('<span>'+ (i+1) +'</span>');
     }   
 }  
+
+async function loadDevelopers(sprintNumber) {
+    const developers = []; 
+    await fetch(`data/pr-summary-sprint-${sprintNumber}.json`)
+        .then(res => res.json())
+        .then(data => data.forEach(dev => developers.push(dev)))
+        .then(data => developers.sort((a, b) => -(a.count - b.count)))
+        .catch(err => console.error(`Unable to load data: ${err}`));  
+    return developers;
+}
 
 function getColorClass(groupIndex) {
     switch (groupIndex) {
