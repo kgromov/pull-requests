@@ -22,26 +22,21 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
     const sprintNumber = req.body.sprintNumber;
     console.log('app.js, post: ', sprintNumber);
-    res.redirect(`/${sprintNumber}`);  
+    res.redirect(`/sprints/${sprintNumber}`);  
    
 });
 
-app.get("/:sprintNumber", (req, res) => {
+app.get("/sprints/:sprintNumber", (req, res) => {
     const sprintNumber = req.params.sprintNumber;   
     console.log('app.js, get: ', sprintNumber);
-    if (sprintNumber ==='favicon.ico') {
-        // if (typeof sprintNumber !== 'number') {
-            res.redirect('/'); 
-        } else {
-            utils.loadDevelopers(sprintNumber, (currentSummary) => {
-                utils.loadDevelopers(sprintNumber -1, (prevSummary) => {
-                    console.log('currentSummary: ', currentSummary);
-                    console.log('prevSummary: ', prevSummary);
-                    const summary = utils.getSummarySync(prevSummary, currentSummary);
-                    res.render('index', {devs: summary}); 
-                });
-            }); 
-        }     
+    utils.loadDevelopers(sprintNumber, (currentSummary) => {
+        utils.loadDevelopers(sprintNumber -1, (prevSummary) => {
+            console.log('currentSummary: ', currentSummary);
+            console.log('prevSummary: ', prevSummary);
+            const summary = utils.getSummarySync(prevSummary, currentSummary);
+            res.render('index', {devs: summary}); 
+        });
+    });    
 });
 
 app.listen(9000, () => {
