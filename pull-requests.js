@@ -73,7 +73,7 @@ exports.getSummarySync = function(prevSummary, currentSummary) {
     return summaries;   
 }
 
-function getColorClass(groupIndex) {
+exports.getColorClass = function(groupIndex) {
     switch (groupIndex) {
         case 0:
             return 'leader';
@@ -84,12 +84,12 @@ function getColorClass(groupIndex) {
     }
 }
 
-function getIcon(position) {
+exports.getIcon = function (position) {
     if (position < 0) {
-        return '<i class="fas fa-arrow-down"></i>';
+        return 'fas fa-arrow-down';
     } else if (position > 0) {
-        return '<i class="fas fa-arrow-up"></i>';
+        return 'fas fa-arrow-up';
     } else {
-        return '<i class="fas fa-equals"></i>';
+        return 'fas fa-equals';
     }
 }
