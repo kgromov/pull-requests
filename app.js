@@ -18,7 +18,12 @@ app.use(express.static("resources"));
 
 /* Mongoose */
 const localUrl = 'mongodb://localhost:27017/pullRequests';
-mongoose.connect(localUrl, {useNewUrlParser: true, useUnifiedTopology: true});
+
+const dbUser = 'admin';
+const dbPassword = '';
+const clusterUrl = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.kxhtq.mongodb.net/pullRequests`;
+
+mongoose.connect(clusterUrl, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const sprintSchema = new mongoose.Schema({ 
     number: {
