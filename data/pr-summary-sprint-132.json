@@ -7,7 +7,7 @@
     {
         "firstName": "Ihor",
         "lastName": "Bystrov",
-        "count":    251
+        "count":    276
     },
     {
         "firstName": "Eugene",
@@ -32,5 +32,10 @@
         "firstName": "Oleksii",
         "lastName": "Bulovzorov",
         "count":    150
+    },
+	{
+        "firstName": "Viacheslav",
+        "lastName": "Cheban",
+        "count":    10
     }
 ]

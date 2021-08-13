@@ -2,35 +2,40 @@
     {
         "firstName": "Konstantin",
         "lastName": "Gromov",
-        "count":    148
+        "count":    167
     },
     {
         "firstName": "Ihor",
         "lastName": "Bystrov",
-        "count":    267
+        "count":    281
     },
     {
         "firstName": "Eugene",
         "lastName": "Turovskyy",
-        "count":    205
+        "count":    226
     },
     {
         "firstName": "Serhii",
         "lastName": "Muslanov",
-        "count":    193
+        "count":    213
     },{
         "firstName": "Dmytro",
         "lastName": "Annenkov",
-        "count":    197
+        "count":    213
     },
     {
         "firstName": "Myhkailo",
         "lastName": "Mykhailyk",
-        "count":    131
+        "count":    139
     },
     {
         "firstName": "Oleksii",
         "lastName": "Bulovzorov",
-        "count":    143
+        "count":    152
+    },
+	{
+        "firstName": "Viacheslav",
+        "lastName": "Cheban",
+        "count":    22
     }
 ]
