@@ -1,0 +1,22 @@
+<%- include("partials/header") -%>
+
+    <div class="box" id="heading">
+        <h1>Sprints</h1>        
+    </div>
+
+    <div class="box">
+        <% sprints.forEach(sprint => { %>
+            <div class="item">
+                <p><%= sprint.name %></p>
+                <a class="button" href="/sprints/<%= sprint.number %>">Details</a>
+            </div>           
+        <% }) %>
+
+        <form class="item" action="/sprints" method="post">
+            <input type="hidden" name="sprintNumber" value="<%= nextSprintNumber %>">
+            <input type="text" name="sprintName" placeholder="New sprint" autocomplete="off">
+            <button type="submit">+</button>
+        </form>
+    </div>
+
+<%- include("partials/footer") -%>

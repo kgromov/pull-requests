@@ -1,0 +1,18 @@
+<%- include("partials/header") -%>
+
+    <div class="box" id="heading">
+        <h1>Pull requests summary</h1>        
+    </div>
+
+    <div class="summary">
+        <% devs.forEach(dev => { %>
+            <div class="progressbar <%= dev.status %>" style="width: <%= dev.width %>px;">
+                <span><%= dev.position %></span>
+                <i class="<%= dev.icon %>"></i>
+                <p><%= dev.fullName %></p>
+                <p class="diff"><%= dev.count %><em><%= dev.diff %></em></p>
+            </div>
+        <% }) %>
+    </div>
+
+<%- include("partials/footer") -%>

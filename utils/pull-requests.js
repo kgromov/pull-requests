@@ -50,8 +50,8 @@ exports.getSummarySync = function(prevSummary, currentSummary) {
     const minPRs = currentSummary[currentSummary.length-1].count;
     for (let i = 0; i < currentSummary.length; i++) {
         let currState = currentSummary[i];
-        const prevState = prevSummary.find(dev => dev.lastName === currState.lastName);
-        const prevIndex = prevSummary.findIndex(dev => dev.lastName === currState.lastName);
+        const prevState = prevSummary.find(dev => dev.developer === currState.developer);
+        const prevIndex = prevSummary.findIndex(dev => dev.developer === currState.developer);
         // console.log(currState);
         const diff = prevState ? '(+' + (currState.count - prevState.count) + ')' : '';
            
@@ -61,7 +61,7 @@ exports.getSummarySync = function(prevSummary, currentSummary) {
     
         summary = {
             position: i+1,
-            fullName: currState.firstName + ' ' + currState.lastName,
+            fullName: currState.developer,
             count: currState.count,
             diff: diff,
             status: getColorClass(groupIndex),
@@ -73,7 +73,7 @@ exports.getSummarySync = function(prevSummary, currentSummary) {
     return summaries;   
 }
 
-exports.getColorClass = function(groupIndex) {
+function getColorClass(groupIndex) {
     switch (groupIndex) {
         case 0:
             return 'leader';
@@ -84,7 +84,7 @@ exports.getColorClass = function(groupIndex) {
     }
 }
 
-exports.getIcon = function (position) {
+function getIcon(position) {
     if (position < 0) {
         return 'fas fa-arrow-down';
     } else if (position > 0) {

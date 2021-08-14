@@ -1,0 +1,21 @@
+<%- include("partials/header") -%>
+
+    <div class="box" id="heading">
+        <h1>Developers</h1>        
+    </div>
+
+    <div class="box">
+        <% developers.forEach(dev => { %>
+            <div class="item">
+                <p><%= dev.name %></p>
+                <a class="button" href="/developers/<%= dev._id %>">Details</a>
+            </div>           
+        <% }) %>
+
+        <form class="item" action="/developers" method="post">
+            <input type="text" name="name" placeholder="New developer" autocomplete="off">
+            <button type="submit">+</button>
+        </form>
+    </div>
+
+<%- include("partials/footer") -%>
