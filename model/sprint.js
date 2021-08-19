@@ -41,9 +41,5 @@ exports.sprints = [
     {
         name: 'S132 UA',
         number: 132        
-    },
-    {
-        name: 'S132 UA',
-        number: 132        
-    }   
+    }  
 ]

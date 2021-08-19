@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const sprintsRouter = require("./routes/sprints-router");
 const developersRouter = require("./routes/developers-router");
 const sprintService = require("./services/sprint-service");
+const developerService = require("./services/developer-service");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -27,7 +28,11 @@ mongoose.connect(localUrl, {useNewUrlParser: true, useUnifiedTopology: true})
 /* Populate with existed data */
 // sprintService.resetSprints();
 // sprintService.resetSprintsSummary();
+// developerService.resetDevelopers();
 
+app.get("/", (req, res) => { 
+    res.render('home'); 
+});
 
 app.listen(9000, () => {
     console.log("Server is started on post 9000");
