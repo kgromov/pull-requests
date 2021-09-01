@@ -7,22 +7,26 @@
 <div class="box">
     <form class="item" action="/developers/pullRequests" method="post">
         <input type="hidden" name="devName" value="<%= developer.name %>">
-        
-        <label for="sprint">Sprints:</label>
-        <input list="sprints" name="sprint" id="sprint">
-        <datalist id="sprints">
-            <% sprints.forEach(sprint => { %>
-                <option value="<%= sprint.number %>">
-            <% }) %> 
-        </datalist>
-        <br>
-
-        <!-- Better to provide a map -->
+        <div class="form-group">
+            <label for="sprint">Sprints:</label>
+            <input class="form-control" list="sprints" name="sprint" id="sprint">
+            <datalist id="sprints">
+                <% sprints.forEach(sprint => { %>
+                    <option value="<%= sprint.number %>">
+                <% }) %> 
+            </datalist>
+        </div>
+        <div class="form-group">
+             <!-- Better to provide a map -->
         <label for="count">PR this sprint</label>
-        <input type="number" id="count" name="count" 
+        <input  class="form-control"
+                type="number" 
+                id="count" 
+                name="count" 
                 min="<%= prevCount %>" 
                 max="999" step="1" value="<%= prevCount %>">
-        <button type="submit">Update</button>
+        </div>       
+        <button class="btn btn-primary" type="submit">Update</button>
     </form>
 </div>
 

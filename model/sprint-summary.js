@@ -59,7 +59,7 @@ exports.summary = [
             },
             {
                 developer: "Ihor Bystrov",
-                count:    261
+                count:    236
             },
             {
                 developer: "Eugene Turovskyy",
@@ -91,7 +91,7 @@ exports.summary = [
             },
             {
                 developer: "Ihor Bystrov",
-                count:    266
+                count:    241
             },
             {
                 developer: "Eugene Turovskyy",
@@ -123,7 +123,7 @@ exports.summary = [
             },
             {
                 developer: "Ihor Bystrov",
-                count:    267
+                count:    242
             },
             {
                 developer: "Eugene Turovskyy",
@@ -155,7 +155,7 @@ exports.summary = [
             },
             {
                 developer: "Ihor Bystrov",
-                count:    276
+                count:    251
             },
             {
                 developer: "Eugene Turovskyy",
@@ -187,7 +187,7 @@ exports.summary = [
             },
             {
                 developer: "Ihor Bystrov",
-                count:    276
+                count:    251
             },
             {
                 developer: "Eugene Turovskyy",

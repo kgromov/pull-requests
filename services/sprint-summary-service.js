@@ -53,10 +53,14 @@ exports.updateDeveloper = async function(sprintNumber, devName, newCount) {
     // );
     const sprint = await SprintSummary.findOne({sprint: sprintNumber});
     // _id: new mongoose.Types.ObjectId(),
-    const dev = sprint.pullRequests.find(pr => pr.developer === devName) 
-            || new PullRequest({developer: devName, count: newCount});
-    console.log(dev);
-    sprint.pullRequests.push(dev);
+    const pullRequets = sprint.pullRequests;
+    const index = pullRequets.findIndex(pr => pr.developer === devName);
+    if (index === -1) {
+        const dev = new PullRequest({developer: devName, count: newCount});
+        pullRequets.push(dev);
+    } else {
+        pullRequets[index].count = newCount;
+    }
     console.log(sprint);
     return await sprint.save();
 }

@@ -66,7 +66,8 @@ exports.getSummarySync = function(prevSummary, currentSummary) {
             diff: diff,
             status: getColorClass(groupIndex),
             icon: getIcon(prevIndex === -1 ? 0 : prevIndex - i),
-            width: Math.floor(currState.count / minPRs * 1.5 * 300)
+            // width: Math.floor(currState.count / minPRs * 1.5 * 300)
+            width: Math.floor((currState.count / minPRs) * 50 + 300)
         };
         summaries.push(summary);
     }   
