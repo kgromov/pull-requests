@@ -15,7 +15,7 @@
 .progressbar {
     width: 300px;
     margin: 2px 0px;
-    text-align: left;
+    /* text-align: left; */
     padding-left: 10px;
     /* display: inline-block; */
     /* position: absolute; */
@@ -39,8 +39,22 @@
 }
 
 .diff {
+    max-width: 60px;
+    /* width: 17%; */
     text-align: right;
-    /* display: inline-block; */
+    display: inline-block;
+}
+
+.stat {
+    width: 15%;
+    text-align: left;
+    display: inline-block;
+}
+
+.name {
+    width: 58%;
+    text-align: left;
+    display: inline-block;
 }
 
 .fa-arrow-up{
@@ -52,12 +66,15 @@ span {
 }
 
 
-.box {
-    /* max-width: 400px; */
+.box {    
     margin: 50px auto;
     background: white;
     border-radius: 5px;
     box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+  }
+
+  .narrow {
+    max-width: 400px;
   }
   
   #heading {
@@ -101,8 +118,7 @@ span {
   }
   
   button {
-    min-height: 50px;
-    width: 50px;
+    min-height: 50px;    
     border-radius: 50%;
     border-color: transparent;
     background-color: #A683E3;
@@ -110,6 +126,10 @@ span {
     font-size: 30px;
     padding-bottom: 6px;
     border-width: 0;
+  }
+
+  .btn-small {
+      width: 50px;
   }
   
   input[type="text"] {

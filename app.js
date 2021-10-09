@@ -6,6 +6,7 @@ const sprintsRouter = require("./routes/sprints-router");
 const developersRouter = require("./routes/developers-router");
 const sprintService = require("./services/sprint-service");
 const developerService = require("./services/developer-service");
+const sprintSummaryService = require("./services/sprint-summary-service");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -17,18 +18,18 @@ app.use("/developers", developersRouter);
 /* Mongoose */
 const localUrl = 'mongodb://localhost:27017/pull-requests';
 const dbUser = 'admin';
-const dbPassword = '';
+const dbPassword = 'DCIY9xCBblRKEJgE';
 const clusterUrl = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.kxhtq.mongodb.net/pull-requests`;
 
 // establish connection
-mongoose.connect(localUrl, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(clusterUrl, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log('Sucessfully connected to MongoDB...'))
     .catch(e => console.error('Failed connected to MongoDB...', e));
 
 /* Populate with existed data */
-// sprintService.resetSprints();
-// sprintService.resetSprintsSummary();
-// developerService.resetDevelopers();
+sprintService.resetSprints();
+sprintSummaryService.resetSprintsSummary();
+developerService.resetDevelopers();
 
 app.get("/", (req, res) => { 
     res.render('home'); 

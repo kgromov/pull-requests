@@ -7,9 +7,14 @@
     <div class="summary">
         <% devs.forEach(dev => { %>
             <div class="progressbar <%= dev.status %>" style="width: <%= dev.width %>px;">
-                <span><%= dev.position %></span>
-                <i class="<%= dev.icon %>"></i>
-                <p><%= dev.fullName %></p>
+                <div class="stat">
+                    <span><%= dev.position %></span>
+                    <i class="<%= dev.icon %>"></i>
+                    <% if (dev.hasAward) { %>
+                        <i class="fas fa-award"></i>
+                    <% } %>
+                </div>                
+                <p class="name"><%= dev.fullName %></p>
                 <p class="diff"><%= dev.count %><em><%= dev.diff %></em></p>
             </div>
         <% }) %>
