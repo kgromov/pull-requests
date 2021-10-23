@@ -22,7 +22,7 @@ const dbPassword = '';
 const clusterUrl = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.kxhtq.mongodb.net/pull-requests`;
 
 // establish connection
-mongoose.connect(localUrl, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(clusterUrl, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log('Sucessfully connected to MongoDB...'))
     .catch(e => console.error('Failed connected to MongoDB...', e));
 
