@@ -20,7 +20,7 @@ exports.getDeveloper = async function(developerId) {
 }
 
 exports.createDeveloper = async function(name) {
-    const newDev = new Developer({name: devName});
+    const newDev = new Developer({name: name});
     const result = await newDev.save();
     console.log(`New dev ${result} created`);
 }

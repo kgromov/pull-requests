@@ -33,7 +33,7 @@ exports.addSprint = async function(sprint) {
 
 exports.addDeveloper = async function(dev) {
     const sprintNumber = await sprintService.getLatestSprintNumber();
-    const sprint = await getSprintSummary(sprintNumber);
+    const sprint = await SprintSummary.findOne({sprint: sprintNumber});
     const newDeveloper = new PullRequest({
         developer: dev.name,
         count: 0

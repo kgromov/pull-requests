@@ -9,10 +9,10 @@ router.get("/", async (req, res) => {
     res.render('developers', {developers: developers});  
 });
 
-router.post("/", async (req, res) => { 
+router.post("/", async (req, res) => {    
     const devName = req.body.name;
     const newDev = await developerService.createDeveloper(devName);
-    await sprintSummaryService.addDeveloper(newDev);
+    // await sprintSummaryService.addDeveloper(newDev);
     // or 
     // Promise.all(developerService.createDeveloper(devName), 
     //             sprintSummaryService.addDeveloper(newDev))
