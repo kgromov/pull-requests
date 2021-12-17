@@ -7,8 +7,11 @@
     <div class="box">
         <% sprints.forEach(sprint => { %>
             <div class="item">
-                <p><%= sprint.name %></p>
-                <a class="button" href="/sprints/<%= sprint.number %>">Details</a>
+                <div class="item-name"><%= sprint.name %></div>
+                <div class="item-name"><%= sprint.goal %></div>
+                <div class="actions">
+                    <a class="btn btn-outline-primary btn-lg" href="/sprints/<%= sprint.number %>">Details</a>
+                </div>                
             </div>           
         <% }) %>
 

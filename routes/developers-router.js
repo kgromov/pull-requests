@@ -30,6 +30,12 @@ router.get("/:developerId", async (req, res) => {
     res.render('pullRequests', {developer: developer, sprints: sprints, prevCount: prevCount});  
 });
 
+router.get("/:developerId/delete", async (req, res) => { 
+    const developerId = req.params.developerId;   
+    const developer = await developerService.deleteDeveloper(developerId);
+    res.redirect('/'); 
+});
+
 
 router.post("/pullRequests", async (req, res) => { 
     const sprint = req.body.sprint;

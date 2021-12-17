@@ -26,7 +26,8 @@ exports.createDeveloper = async function(name) {
 }
 
 exports.deleteDeveloper = async function(developerId) {
-    await Developer.findByIdAndDelete(developerId);
+    // await Developer.findByIdAndDelete(developerId);
+    const developer = await Developer.findByIdAndUpdate(developerId, {$set: {active: false}});
 }
 
 exports.resetDevelopers = async function() {

@@ -6,9 +6,16 @@
 
     <div class="box">
         <% developers.forEach(dev => { %>
-            <div class="item">
-                <p><%= dev.name %></p>
-                <a class="button" href="/developers/<%= dev._id %>">Details</a>
+            <div class="item <%= dev.active ? '' : 'deleted' %>">
+                <div class="item-name"><%= dev.name %></div>
+                <% if (dev.active) { %>
+                    <div class="actions">
+                        <a class="btn btn-outline-primary btn-lg" href="/developers/<%= dev._id %>">Details</a>
+                    </div>
+                    <div class="actions">                        
+                        <a class="btn btn-outline-primary btn-lg" href="/developers/<%= dev._id %>/delete">Delete</a>
+                    </div>                    
+                <% } %>                  
             </div>           
         <% }) %>
 

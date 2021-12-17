@@ -20,4 +20,13 @@
         <% }) %>
     </div>
 
+    <div class="navigation">
+        <div>
+            <a class="btn btn-outline-primary btn-lg" href="/sprints/<%= sprint-1 %>">Prev</a>
+        </div>
+         <div>
+            <a  class="btn btn-outline-primary btn-lg"href="/sprints/<%= ++sprint %>">Next</a>
+        </div>   
+    </div>
+
 <%- include("partials/footer") -%>

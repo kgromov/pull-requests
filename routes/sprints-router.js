@@ -38,7 +38,7 @@ router.get("/:sprintNumber", async (req, res) => {
 
     const sprintSummary = utils.getSummarySync(prevSummary, currSummary);
 
-    res.render('summary', {devs: sprintSummary}); 
+    res.render('summary', {devs: sprintSummary, sprint: sprintNumber}); 
 });
 
 

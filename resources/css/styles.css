@@ -81,13 +81,32 @@ span {
     text-align: center;
     position: relative;
   }
-  
+    
   .item {
     min-height: 70px;
     display: flex;
     align-items: center;
+    /* flex-grow: 1; */
+    justify-content: space-between;
     border-bottom: 1px solid #F1F1F1;
     position: relative;
+  }
+
+  .item-name {
+    display: flex; 
+    margin: 0;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 200;
+    color: #00204a;
+    justify-self: flex-start;
+    /* flex-basis: 80%; */
+    flex-grow: 1;
+  }
+
+  .actions {
+    display: flex; 
+    justify-self: flex-end;
   }
   
   .item:last-child {
@@ -103,13 +122,6 @@ span {
     margin: 20px 10px 20px 20px;
   }
   
-  p {
-    margin: 0;
-    padding: 20px;
-    font-size: 20px;
-    font-weight: 200;
-    color: #00204a;
-  }
   
   form.item {
     text-align: center;
@@ -156,7 +168,8 @@ span {
     color: white;
     color: rgba(0, 0, 0, 0.5);
     text-align: center;
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-bottom: 20px;
   }
   
   a.button {
@@ -166,4 +179,21 @@ span {
     top: 20px;
     font-size: 1.2rem;
     vertical-align: middle;
+  }
+
+  .deleted {
+    text-decoration: line-through;
+  }
+
+  .disabled-link {
+    color: currentColor;
+    pointer-events: none;
+    text-decoration: none;
+  }
+
+  .navigation {
+      display: flex;
+      margin-top: 50px;
+      padding: 5 50;
+      justify-content: space-around;
   }

@@ -7,6 +7,10 @@ const developerSchema = new mongoose.Schema({
         minLength: 3,
         maxLength: 255
     }, 
+    active: {
+        type: Boolean,
+        default: true
+    }
   });
 
 exports.developerSchema = developerSchema;
