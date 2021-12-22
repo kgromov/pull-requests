@@ -18,7 +18,7 @@ exports.getSprintById = async function(sprintId) {
 } 
 
 exports.getLatestSprintNumber = async function() {
-    return await Sprint.findOne({}, {number: 1}).sort({naumber: -1, _id: 0});
+    return await Sprint.findOne({}, {number: 1, _id: 0}).sort({number: -1});
 }
 
 exports.createSprint = async function(sprintName, sprintNumber) {

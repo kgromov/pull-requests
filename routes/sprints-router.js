@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
 });
 
 router.get("/:sprintNumber", async (req, res) => {
-    const sprintNumber = req.params.sprintNumber;   
+    const sprintNumber = parseInt(req.params.sprintNumber);   
     console.log('sprints-route, GET: ', sprintNumber);
 
     const prevSprint = await sprintSummaryService.getSprintSummary(sprintNumber - 1);
@@ -37,8 +37,13 @@ router.get("/:sprintNumber", async (req, res) => {
     const currSummary = currSprint.pullRequests.sort((a, b) => -(a.count - b.count));
 
     const sprintSummary = utils.getSummarySync(prevSummary, currSummary);
+    const latestSprintNumber = await sprintService.getLatestSprintNumber();
 
-    res.render('summary', {devs: sprintSummary, sprint: sprintNumber}); 
+    const prevSprintNumber = prevSprint.pullRequests.length !== 0 ? sprintNumber - 1 : null;
+    const nextSprintNumber = latestSprintNumber.number !== sprintNumber ? sprintNumber + 1 : null;
+    console.log('prevSprintNumber = ', prevSprintNumber, ' nextSprintNumber = ', nextSprintNumber);
+
+    res.render('summary', {devs: sprintSummary, prevSprint: prevSprintNumber, nextSprint: nextSprintNumber}); 
 });
 
 

@@ -21,12 +21,16 @@
     </div>
 
     <div class="navigation">
-        <div>
-            <a class="btn btn-outline-primary btn-lg" href="/sprints/<%= sprint-1 %>">Prev</a>
-        </div>
-         <div>
-            <a  class="btn btn-outline-primary btn-lg"href="/sprints/<%= ++sprint %>">Next</a>
-        </div>   
+        <% if (prevSprint !== null) { %>
+            <div>
+                <a class="btn btn-outline-primary btn-lg" href="/sprints/<%= prevSprint %>">Prev</a>
+            </div>
+        <% } %>
+        <% if (nextSprint !== null) { %>
+            <div>
+                <a  class="btn btn-outline-primary btn-lg"href="/sprints/<%= nextSprint %>">Next</a>
+            </div>  
+        <% } %> 
     </div>
 
 <%- include("partials/footer") -%>
