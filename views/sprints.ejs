@@ -16,8 +16,15 @@
         <% }) %>
 
         <form class="item" action="/sprints" method="post">
-            <input type="hidden" name="sprintNumber" value="<%= nextSprintNumber %>">
-            <input type="text" name="sprintName" placeholder="New sprint" autocomplete="off">
+            <div>
+                <input type="hidden" name="sprintNumber" value="<%= nextSprintNumber %>">
+                <input type="text" name="goal" placeholder="Sprint goal" autocomplete="off">
+            </div>
+            <div>
+                <label class="w-10">Sprint dates:</label>
+                <input type="date" name="from" placeholder="from">
+                <input type="date" name="from" placeholder="to">
+            </div>            
             <button type="submit" class="btn-small">+</button>
         </form>
     </div>

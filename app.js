@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const client = require("./clients/bitbucket-client");
 
 const sprintsRouter = require("./routes/sprints-router");
 const developersRouter = require("./routes/developers-router");
@@ -15,10 +16,11 @@ app.use(express.static("resources"));
 app.use("/sprints", sprintsRouter);
 app.use("/developers", developersRouter);
 
+
 /* Mongoose */
 const localUrl = 'mongodb://localhost:27017/pull-requests';
 const dbUser = 'admin';
-const dbPassword = '';
+const dbPassword = 'DCIY9xCBblRKEJgE';
 const clusterUrl = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.kxhtq.mongodb.net/pull-requests`;
 
 // establish connection
@@ -31,7 +33,10 @@ mongoose.connect(clusterUrl, {useNewUrlParser: true, useUnifiedTopology: true})
 // sprintSummaryService.resetSprintsSummary();
 // developerService.resetDevelopers();
 
-app.get("/", (req, res) => { 
+app.get("/", async (req, res) => { 
+    // await client.authorize();
+    // await client.getPullRequestsCount('xxrds', 'OPEN', '2022-06-01', '2022-06-14');
+    console.log(await client.getFromLocalBackend('xxrds', 'OPEN', '2022-06-01', '2022-06-14'));
     res.render('home'); 
 });
 
