@@ -18,7 +18,7 @@ app.use("/developers", developersRouter);
 /* Mongoose */
 const localUrl = 'mongodb://localhost:27017/pull-requests';
 const dbUser = 'admin';
-const dbPassword = '';
+const dbPassword = process.env.MONGO_DB_PASSWORD;
 const clusterUrl = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.kxhtq.mongodb.net/pull-requests`;
 
 // establish connection
@@ -34,6 +34,8 @@ mongoose.connect(clusterUrl, {useNewUrlParser: true, useUnifiedTopology: true})
 app.get("/", (req, res) => { 
     res.render('home'); 
 });
+
+const port = process.env.PORT || 9000;
 
 app.listen(9000, () => {
     console.log("Server is started on post 9000");
