@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
 
 const port = process.env.PORT || 9000;
 
-app.listen(9000, () => {
+app.listen(port, () => {
     console.log("Server is started on post 9000");
 });
 
